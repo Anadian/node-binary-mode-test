@@ -4,7 +4,7 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![License](https://img.shields.io/github/license/Anadian/node-binary-mode-test)](https://github.com/Anadian/node-binary-mode-test/blob/master/LICENSE)
 
-> Tests if NodeJS can probably handle binary files on all platforms.
+> Tests if NodeJS can properly handle binary files on all platforms.
 # Table of Contents
 - [Background](#Background)
 - [Install](#Install)

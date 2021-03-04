@@ -1,10 +1,10 @@
 {
 	"name": "node-binary-mode-test",
 	"version": "0.0.1",
-	"description": "Tests if NodeJS can probably handle binary files on all platforms.",
+	"description": "Tests if NodeJS can properly handle binary files on all platforms.",
 	"main": "source/main.js",
 	"scripts": {
-		"test": "ava -v ./source/main.test.js",
+		"test": "./source/main.js",
 		"lint": "eslint ./source/main.js",
 		"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 		"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
