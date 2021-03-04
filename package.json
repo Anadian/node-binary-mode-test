@@ -1,6 +1,6 @@
 {
 	"name": "node-binary-mode-test",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Tests if NodeJS can properly handle binary files on all platforms.",
 	"main": "source/main.js",
 	"scripts": {
