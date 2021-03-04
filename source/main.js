@@ -147,20 +147,25 @@ async function main_Async( options = {} ){
 
 	//Function
 	MakeDir.sync( 'Output' );
-	const file_buffer = FileSystem.readFileSync( 'test/example.bin' );
-	//console.log( file_buffer );
-	Assert.deepStrictEqual( file_buffer, ACTUAL_BUFFER );
-	const file_string = FileSystem.readFileSync( 'test/example.bin', 'utf8' );
-	//console.log( file_string );
-	//FileSystem.writeFileSync( 'Output/example.utf8', file_string, 'utf8' );
-	const file_u8array = new Uint8Array( file_buffer );
-	Assert.deepStrictEqual( file_u8array, ACTUAL_U8ARRAY );
-	//console.log( file_u8array );
-	//FileSystem.writeFileSync( 'Output/example.u8array', file_u8array.toString(), 'utf8' );
-	const file_base64 = file_buffer.toString( 'base64' );
-	Assert.deepStrictEqual( file_base64, ACTUAL_BASE64 );
-	//console.log( file_base64 );
-	//FileSystem.writeFileSync( 'Output/example.b64', file_base64, 'utf8' );
+	try{ 
+		const file_buffer = FileSystem.readFileSync( 'test/example.bin' );
+		//console.log( file_buffer );
+		Assert.deepStrictEqual( file_buffer, ACTUAL_BUFFER );
+		const file_string = FileSystem.readFileSync( 'test/example.bin', 'utf8' );
+		//console.log( file_string );
+		//FileSystem.writeFileSync( 'Output/example.utf8', file_string, 'utf8' );
+		const file_u8array = new Uint8Array( file_buffer );
+		Assert.deepStrictEqual( file_u8array, ACTUAL_U8ARRAY );
+		//console.log( file_u8array );
+		//FileSystem.writeFileSync( 'Output/example.u8array', file_u8array.toString(), 'utf8' );
+		const file_base64 = file_buffer.toString( 'base64' );
+		Assert.deepStrictEqual( file_base64, ACTUAL_BASE64 );
+		//console.log( file_base64 );
+		//FileSystem.writeFileSync( 'Output/example.b64', file_base64, 'utf8' );
+	} catch(error){
+		console.error(`Caught: ${error}`);
+		process.exitCode = 1;
+	}
 
 }
 //#Exports and Execution
