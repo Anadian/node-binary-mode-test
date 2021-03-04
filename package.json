@@ -4,7 +4,7 @@
 	"description": "Tests if NodeJS can properly handle binary files on all platforms.",
 	"main": "source/main.js",
 	"scripts": {
-		"test": "./source/main.js",
+		"test": "node source/main.js",
 		"lint": "eslint ./source/main.js",
 		"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 		"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
