@@ -148,10 +148,10 @@ async function main_Async( options = {} ){
 	//Function
 	MakeDir.sync( 'Output' );
 	try{ 
-		const file_buffer = FileSystem.readFileSync( 'test/example.bin' );
+		const file_buffer = FileSystem.readFileSync( 'test/example.txt' );
 		console.log( file_buffer );
 		Assert.deepStrictEqual( file_buffer, ACTUAL_BUFFER );
-		const file_string = FileSystem.readFileSync( 'test/example.bin', 'utf8' );
+		const file_string = FileSystem.readFileSync( 'test/example.txt', 'utf8' );
 		console.log( file_string );
 		//FileSystem.writeFileSync( 'Output/example.utf8', file_string, 'utf8' );
 		const file_u8array = new Uint8Array( file_buffer );
