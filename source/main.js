@@ -172,16 +172,16 @@ async function main_Async( options = {} ){
 		Assert.deepStrictEqual( source_buffer, SOURCE_ACTUAL_BUFFER );
 		const source_string = FileSystem.readFileSync( 'test/example-source-file.js', 'utf8' );
 		console.log( source_string );
-		Assert.deepStrictEqual( source_string, source_buffer.toString( 'utf8' ) );
-		Assert.deepStrictEqual( source_string, SOURCE_ACTUAL_BUFFER.toString( 'utf8' ) );
+		Assert.deepStrictEqual( source_string, source_buffer.toString( 'utf8' ), 'Testing source_string against source_buffer.toString');
+		Assert.deepStrictEqual( source_string, SOURCE_ACTUAL_BUFFER.toString( 'utf8' ), 'Testing source_string against SOURCE_ACTUAL_BUFFER.toString' );
 		//FileSystem.writeFileSync( 'Output/example-source-file.utf8', source_string, 'utf8' );
 		const source_u8array = new Uint8Array( source_buffer );
 		console.log( source_u8array );
-		Assert.deepStrictEqual( source_u8array, SOURCE_ACTUAL_U8ARRAY );
+		Assert.deepStrictEqual( source_u8array, SOURCE_ACTUAL_U8ARRAY, 'Testing source_u8array against SOURCE_ACTUAL_U8ARRAY' );
 		//FileSystem.writeFileSync( 'Output/example-source-file.u8array', source_u8array.toString(), 'utf8' );
 		const source_base64 = source_buffer.toString( 'base64' );
 		console.log( source_base64 );
-		Assert.deepStrictEqual( source_base64, SOURCE_ACTUAL_BASE64 );
+		Assert.deepStrictEqual( source_base64, SOURCE_ACTUAL_BASE64, 'Testing source_base64 against SOURCE_ACTUAL_BASE64' );
 		//Assert.deepStrictEqual( source_buffer, ACTUAL_BUFFER );
 		//FileSystem.writeFileSync( 'Output/example-source-file.b64', source_base64, 'utf8' );
 
