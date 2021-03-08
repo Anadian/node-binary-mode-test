@@ -169,7 +169,7 @@ async function main_Async( options = {} ){
 		//FileSystem.writeFileSync( 'Output/example.b64', file_base64, 'utf8' );
 		const source_buffer = FileSystem.readFileSync( 'test/example-source-file.js' );
 		console.log( source_buffer );
-		Assert.deepStrictEqual( source_buffer, SOURCE_ACTUAL_BUFFER );
+		Assert.deepStrictEqual( source_buffer, SOURCE_ACTUAL_BUFFER, 'Testing source_buffer against SOURCE_ACTUAL_BUFFER' );
 		const source_string = FileSystem.readFileSync( 'test/example-source-file.js', 'utf8' );
 		console.log( source_string );
 		Assert.deepStrictEqual( source_string, source_buffer.toString( 'utf8' ), 'Testing source_string against source_buffer.toString');
