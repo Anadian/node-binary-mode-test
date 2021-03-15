@@ -73,17 +73,17 @@ if(require.main === module){
 	var function_return = [1,null];
 	//Config
 	//Main
+	const output_dir = Path.join( 'test', 'DATA' );
+	MakeDir.sync( output_dir );
 	if( process.argv.length > 2 ){
 		for( var i = 2; i < process.argv.length; i++ ){
 			var path_object = Path.parse( process.argv[i] );
-			var output_dir = Path.join( 'Output', path_object.name );
-			MakeDir.sync( output_dir );
 			var file_buffer = FileSystem.readFileSync( process.argv[i] );
-			FileSystem.writeFileSync( Path.join( output_dir, 'file.utf8' ), file_buffer, 'utf8' );
+			FileSystem.writeFileSync( Path.join( output_dir, path_object.name+'.utf8' ), file_buffer, 'utf8' );
 			var u8array = new Uint8Array( file_buffer );
-			FileSystem.writeFileSync( Path.join( output_dir, 'file.u8array' ), u8array.toString(), 'utf8' );
+			FileSystem.writeFileSync( Path.join( output_dir, path_object.name+'.u8array' ), u8array.toString(), 'utf8' );
 			var base64 = file_buffer.toString( 'base64' );
-			FileSystem.writeFileSync( Path.join( output_dir, 'file.b64' ), base64, 'utf8' );
+			FileSystem.writeFileSync( Path.join( output_dir, path_object.name+'.b64' ), base64, 'utf8' );
 		}
 	}
 } else{
