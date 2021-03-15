@@ -234,8 +234,8 @@ async function main_Async( options = {} ){
 		}
 	}*/
 	setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
-	setTimeout( DoTestCase_Async, 30000, test_cases[1] ); 
-	setTimeout( DoTestCase_Async, 60000, test_cases[2] ); 
+	setTimeout( DoTestCase_Async, 10000, test_cases[1] ); 
+	setTimeout( DoTestCase_Async, 40000, test_cases[2] ); 
 }
 //#Exports and Execution
 if(require.main === module){
