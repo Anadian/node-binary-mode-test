@@ -54,29 +54,21 @@ if(require.main === module){
 	PROCESS_NAME = process.argv0;
 }
 
-const U8ARRAYS_OBJECT = {
-	tc1: new Uint8Array( [ 83,111,109,101,32,116,101,120,116,32,119,105,116,104,32,97,32,85,110,105,120,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,10,32,65,110,111,116,104,101,114,32,108,105,110,101,32,119,105,116,104,32,87,105,110,100,111,119,115,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,13,10,72,111,119,32,97,98,111,117,116,32,97,110,111,116,104,101,114,32,108,105,110,101,32,119,105,116,104,32,97,32,99,108,97,115,115,105,99,32,77,97,99,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,13,78,111,119,32,97,32,115,116,114,101,97,109,32,111,102,32,98,105,110,97,114,121,32,100,97,116,97,32,119,105,116,104,32,97,32,67,82,76,70,32,116,104,114,111,117,103,104,32,105,110,32,102,111,114,32,103,111,111,100,32,109,101,97,115,117,114,101,46,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,13,10,16,17,18,19,20,21,22,23,24,25,32 ] ),
-	tc2: new Uint8Array( [ 10,102,117,110,99,116,105,111,110,32,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,32,123,10,32,32,47,47,100,97,116,97,32,98,101,102,111,114,101,10,125,10,10,47,42,42,32,10,32,32,65,32,116,101,115,116,32,111,117,116,112,117,116,32,115,116,114,105,110,103,32,102,111,114,32,112,117,108,108,105,110,103,10,32,32,68,111,99,117,109,101,110,116,97,116,105,111,110,32,83,121,109,98,111,108,115,32,35,36,47,123,40,41,125,10,9,65,110,121,32,115,105,109,112,108,101,32,99,111,110,116,114,111,108,32,99,104,97,114,97,99,116,101,114,32,40,92,110,44,92,114,44,92,116,41,32,97,110,100,32,95,97,110,121,95,32,65,83,67,73,73,32,34,112,114,105,110,116,105,110,103,34,32,99,104,97,114,97,99,116,101,114,32,115,104,111,117,108,100,32,98,101,32,102,105,110,101,32,115,97,118,101,32,102,111,114,32,116,104,101,32,99,111,109,98,105,110,97,116,105,111,110,32,111,102,32,97,110,32,97,115,116,101,114,105,120,32,105,109,109,101,100,105,97,116,101,108,121,32,102,111,108,108,111,119,101,100,32,98,121,32,97,32,102,111,114,119,97,114,100,32,115,108,97,115,104,46,10,42,47,10,47,42,42,32,65,115,32,111,102,32,118,48,46,50,46,57,44,32,76,97,116,105,110,45,49,32,83,117,112,112,108,101,109,101,110,116,97,108,32,99,104,97,114,97,99,116,101,114,115,32,40,85,43,48,48,65,49,45,85,43,48,48,65,67,32,97,110,100,32,85,43,48,48,65,69,45,85,43,48,48,70,70,41,32,99,97,110,32,110,111,119,32,98,101,32,99,97,112,116,117,114,101,100,32,97,115,32,119,101,108,108,44,32,115,112,117,114,114,101,100,32,111,110,32,98,121,32,97,32,115,117,103,103,101,115,116,105,111,110,103,32,102,114,111,109,32,91,111,114,97,110,103,101,105,114,105,115,93,40,104,116,116,112,115,58,47,47,103,105,116,104,117,98,46,99,111,109,47,65,110,97,100,105,97,110,47,101,120,116,114,97,99,116,45,100,111,99,117,109,101,110,116,97,116,105,111,110,45,99,111,109,109,101,110,116,115,47,105,115,115,117,101,115,47,54,41,32,119,104,111,32,119,97,110,116,101,100,32,116,111,32,98,101,32,97,98,108,101,32,116,111,32,99,97,112,116,117,114,101,32,119,111,114,100,115,32,108,105,107,101,32,39,80,97,114,195,161,109,101,116,114,111,115,39,32,42,47,10,10,47,42,10,9,83,104,111,117,108,100,110,39,116,32,98,101,32,101,120,116,114,97,99,116,101,100,46,10,42,47,10,10,47,42,42,42,47,10,10,47,42,42,32,84,104,101,32,112,114,101,118,105,111,117,115,32,116,114,105,112,108,101,32,97,115,116,101,114,105,120,32,108,105,110,101,32,115,104,111,117,108,100,32,98,101,32,97,32,98,108,97,110,107,32,108,105,110,101,46,42,47,10,10,47,42,42,32,65,32,115,101,99,111,110,100,32,116,101,115,116,32,119,105,116,104,111,117,116,32,116,104,101,32,108,105,110,101,32,98,114,101,97,107,32,42,47,10,10,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,10,10,47,42,42,32,10,32,42,32,65,32,116,104,105,114,100,32,84,104,105,110,103,10,32,42,47,10,10,32,47,47,32,83,105,110,103,108,101,32,108,105,110,101,32,99,111,109,109,101,110,116,44,32,119,105,108,108,32,110,111,116,32,111,117,116,112,117,116,10 ] ),
-	tc3: new Uint8Array( [ 10,102,117,110,99,116,105,111,110,32,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,32,123,10,32,32,47,47,100,97,116,97,32,98,101,102,111,114,101,10,125,10,10,47,42,42,32,10,32,32,65,32,116,101,115,116,32,111,117,116,112,117,116,32,115,116,114,105,110,103,32,102,111,114,32,112,117,108,108,105,110,103,47,32,83,105,110,103,108,101,32,108,105,110,101,32,99,111,109,109,101,110,116,44,32,119,105,108,108,32,110,111,116,32,111,117,116,112,117,116,10,13,77,101,115,115,105,110,103,32,97,114,111,117,110,100,32,119,105,116,104,32,97,100,100,105,116,105,111,110,97,108,32,96,48,100,96,115,46,13,10 ] )
-};
-
-const TEST_DATA_ARRAY = [
-	{
-		ACTUAL_U8ARRAY: U8ARRAYS_OBJECT.tc1,
-		ACTUAL_BUFFER: Buffer.from( U8ARRAYS_OBJECT.tc1 ),
-		ACTUAL_BASE64: 'U29tZSB0ZXh0IHdpdGggYSBVbml4LXN0eWxlIGxpbmUgYnJlYWsuCiBBbm90aGVyIGxpbmUgd2l0aCBXaW5kb3dzLXN0eWxlIGxpbmUgYnJlYWsuDQpIb3cgYWJvdXQgYW5vdGhlciBsaW5lIHdpdGggYSBjbGFzc2ljIE1hYy1zdHlsZSBsaW5lIGJyZWFrLg1Ob3cgYSBzdHJlYW0gb2YgYmluYXJ5IGRhdGEgd2l0aCBhIENSTEYgdGhyb3VnaCBpbiBmb3IgZ29vZCBtZWFzdXJlLgABAgMEBQYHCAkKCwwNDg8NChAREhMUFRYXGBkg'
+/*var TestDataObject = {
+	tc1: {
+		u8array: new Uint8Array( [ 83,111,109,101,32,116,101,120,116,32,119,105,116,104,32,97,32,85,110,105,120,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,10,32,65,110,111,116,104,101,114,32,108,105,110,101,32,119,105,116,104,32,87,105,110,100,111,119,115,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,13,10,72,111,119,32,97,98,111,117,116,32,97,110,111,116,104,101,114,32,108,105,110,101,32,119,105,116,104,32,97,32,99,108,97,115,115,105,99,32,77,97,99,45,115,116,121,108,101,32,108,105,110,101,32,98,114,101,97,107,46,13,78,111,119,32,97,32,115,116,114,101,97,109,32,111,102,32,98,105,110,97,114,121,32,100,97,116,97,32,119,105,116,104,32,97,32,67,82,76,70,32,116,104,114,111,117,103,104,32,105,110,32,102,111,114,32,103,111,111,100,32,109,101,97,115,117,114,101,46,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,13,10,16,17,18,19,20,21,22,23,24,25,32 ] ),
+		base64: 'U29tZSB0ZXh0IHdpdGggYSBVbml4LXN0eWxlIGxpbmUgYnJlYWsuCiBBbm90aGVyIGxpbmUgd2l0aCBXaW5kb3dzLXN0eWxlIGxpbmUgYnJlYWsuDQpIb3cgYWJvdXQgYW5vdGhlciBsaW5lIHdpdGggYSBjbGFzc2ljIE1hYy1zdHlsZSBsaW5lIGJyZWFrLg1Ob3cgYSBzdHJlYW0gb2YgYmluYXJ5IGRhdGEgd2l0aCBhIENSTEYgdGhyb3VnaCBpbiBmb3IgZ29vZCBtZWFzdXJlLgABAgMEBQYHCAkKCwwNDg8NChAREhMUFRYXGBkg'
 	},
-	{
-		ACTUAL_U8ARRAY: U8ARRAYS_OBJECT.tc2,
-		ACTUAL_BUFFER: Buffer.from( U8ARRAYS_OBJECT.tc2 ),
-		ACTUAL_BASE64: 'CmZ1bmN0aW9uIERvTm90aGluZ0Z1bmN0aW9uKCkgewogIC8vZGF0YSBiZWZvcmUKfQoKLyoqIAogIEEgdGVzdCBvdXRwdXQgc3RyaW5nIGZvciBwdWxsaW5nCiAgRG9jdW1lbnRhdGlvbiBTeW1ib2xzICMkL3soKX0KCUFueSBzaW1wbGUgY29udHJvbCBjaGFyYWN0ZXIgKFxuLFxyLFx0KSBhbmQgX2FueV8gQVNDSUkgInByaW50aW5nIiBjaGFyYWN0ZXIgc2hvdWxkIGJlIGZpbmUgc2F2ZSBmb3IgdGhlIGNvbWJpbmF0aW9uIG9mIGFuIGFzdGVyaXggaW1tZWRpYXRlbHkgZm9sbG93ZWQgYnkgYSBmb3J3YXJkIHNsYXNoLgoqLwovKiogQXMgb2YgdjAuMi45LCBMYXRpbi0xIFN1cHBsZW1lbnRhbCBjaGFyYWN0ZXJzIChVKzAwQTEtVSswMEFDIGFuZCBVKzAwQUUtVSswMEZGKSBjYW4gbm93IGJlIGNhcHR1cmVkIGFzIHdlbGwsIHNwdXJyZWQgb24gYnkgYSBzdWdnZXN0aW9uZyBmcm9tIFtvcmFuZ2VpcmlzXShodHRwczovL2dpdGh1Yi5jb20vQW5hZGlhbi9leHRyYWN0LWRvY3VtZW50YXRpb24tY29tbWVudHMvaXNzdWVzLzYpIHdobyB3YW50ZWQgdG8gYmUgYWJsZSB0byBjYXB0dXJlIHdvcmRzIGxpa2UgJ1BhcsOhbWV0cm9zJyAqLwoKLyoKCVNob3VsZG4ndCBiZSBleHRyYWN0ZWQuCiovCgovKioqLwoKLyoqIFRoZSBwcmV2aW91cyB0cmlwbGUgYXN0ZXJpeCBsaW5lIHNob3VsZCBiZSBhIGJsYW5rIGxpbmUuKi8KCi8qKiBBIHNlY29uZCB0ZXN0IHdpdGhvdXQgdGhlIGxpbmUgYnJlYWsgKi8KCkRvTm90aGluZ0Z1bmN0aW9uKCkKCi8qKiAKICogQSB0aGlyZCBUaGluZwogKi8KCiAvLyBTaW5nbGUgbGluZSBjb21tZW50LCB3aWxsIG5vdCBvdXRwdXQK'
+	tc2: {
+		u8array: new Uint8Array( [ 10,102,117,110,99,116,105,111,110,32,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,32,123,10,32,32,47,47,100,97,116,97,32,98,101,102,111,114,101,10,125,10,10,47,42,42,32,10,32,32,65,32,116,101,115,116,32,111,117,116,112,117,116,32,115,116,114,105,110,103,32,102,111,114,32,112,117,108,108,105,110,103,10,32,32,68,111,99,117,109,101,110,116,97,116,105,111,110,32,83,121,109,98,111,108,115,32,35,36,47,123,40,41,125,10,9,65,110,121,32,115,105,109,112,108,101,32,99,111,110,116,114,111,108,32,99,104,97,114,97,99,116,101,114,32,40,92,110,44,92,114,44,92,116,41,32,97,110,100,32,95,97,110,121,95,32,65,83,67,73,73,32,34,112,114,105,110,116,105,110,103,34,32,99,104,97,114,97,99,116,101,114,32,115,104,111,117,108,100,32,98,101,32,102,105,110,101,32,115,97,118,101,32,102,111,114,32,116,104,101,32,99,111,109,98,105,110,97,116,105,111,110,32,111,102,32,97,110,32,97,115,116,101,114,105,120,32,105,109,109,101,100,105,97,116,101,108,121,32,102,111,108,108,111,119,101,100,32,98,121,32,97,32,102,111,114,119,97,114,100,32,115,108,97,115,104,46,10,42,47,10,47,42,42,32,65,115,32,111,102,32,118,48,46,50,46,57,44,32,76,97,116,105,110,45,49,32,83,117,112,112,108,101,109,101,110,116,97,108,32,99,104,97,114,97,99,116,101,114,115,32,40,85,43,48,48,65,49,45,85,43,48,48,65,67,32,97,110,100,32,85,43,48,48,65,69,45,85,43,48,48,70,70,41,32,99,97,110,32,110,111,119,32,98,101,32,99,97,112,116,117,114,101,100,32,97,115,32,119,101,108,108,44,32,115,112,117,114,114,101,100,32,111,110,32,98,121,32,97,32,115,117,103,103,101,115,116,105,111,110,103,32,102,114,111,109,32,91,111,114,97,110,103,101,105,114,105,115,93,40,104,116,116,112,115,58,47,47,103,105,116,104,117,98,46,99,111,109,47,65,110,97,100,105,97,110,47,101,120,116,114,97,99,116,45,100,111,99,117,109,101,110,116,97,116,105,111,110,45,99,111,109,109,101,110,116,115,47,105,115,115,117,101,115,47,54,41,32,119,104,111,32,119,97,110,116,101,100,32,116,111,32,98,101,32,97,98,108,101,32,116,111,32,99,97,112,116,117,114,101,32,119,111,114,100,115,32,108,105,107,101,32,39,80,97,114,195,161,109,101,116,114,111,115,39,32,42,47,10,10,47,42,10,9,83,104,111,117,108,100,110,39,116,32,98,101,32,101,120,116,114,97,99,116,101,100,46,10,42,47,10,10,47,42,42,42,47,10,10,47,42,42,32,84,104,101,32,112,114,101,118,105,111,117,115,32,116,114,105,112,108,101,32,97,115,116,101,114,105,120,32,108,105,110,101,32,115,104,111,117,108,100,32,98,101,32,97,32,98,108,97,110,107,32,108,105,110,101,46,42,47,10,10,47,42,42,32,65,32,115,101,99,111,110,100,32,116,101,115,116,32,119,105,116,104,111,117,116,32,116,104,101,32,108,105,110,101,32,98,114,101,97,107,32,42,47,10,10,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,10,10,47,42,42,32,10,32,42,32,65,32,116,104,105,114,100,32,84,104,105,110,103,10,32,42,47,10,10,32,47,47,32,83,105,110,103,108,101,32,108,105,110,101,32,99,111,109,109,101,110,116,44,32,119,105,108,108,32,110,111,116,32,111,117,116,112,117,116,10 ] ),
+		base64: 'CmZ1bmN0aW9uIERvTm90aGluZ0Z1bmN0aW9uKCkgewogIC8vZGF0YSBiZWZvcmUKfQoKLyoqIAogIEEgdGVzdCBvdXRwdXQgc3RyaW5nIGZvciBwdWxsaW5nCiAgRG9jdW1lbnRhdGlvbiBTeW1ib2xzICMkL3soKX0KCUFueSBzaW1wbGUgY29udHJvbCBjaGFyYWN0ZXIgKFxuLFxyLFx0KSBhbmQgX2FueV8gQVNDSUkgInByaW50aW5nIiBjaGFyYWN0ZXIgc2hvdWxkIGJlIGZpbmUgc2F2ZSBmb3IgdGhlIGNvbWJpbmF0aW9uIG9mIGFuIGFzdGVyaXggaW1tZWRpYXRlbHkgZm9sbG93ZWQgYnkgYSBmb3J3YXJkIHNsYXNoLgoqLwovKiogQXMgb2YgdjAuMi45LCBMYXRpbi0xIFN1cHBsZW1lbnRhbCBjaGFyYWN0ZXJzIChVKzAwQTEtVSswMEFDIGFuZCBVKzAwQUUtVSswMEZGKSBjYW4gbm93IGJlIGNhcHR1cmVkIGFzIHdlbGwsIHNwdXJyZWQgb24gYnkgYSBzdWdnZXN0aW9uZyBmcm9tIFtvcmFuZ2VpcmlzXShodHRwczovL2dpdGh1Yi5jb20vQW5hZGlhbi9leHRyYWN0LWRvY3VtZW50YXRpb24tY29tbWVudHMvaXNzdWVzLzYpIHdobyB3YW50ZWQgdG8gYmUgYWJsZSB0byBjYXB0dXJlIHdvcmRzIGxpa2UgJ1BhcsOhbWV0cm9zJyAqLwoKLyoKCVNob3VsZG4ndCBiZSBleHRyYWN0ZWQuCiovCgovKioqLwoKLyoqIFRoZSBwcmV2aW91cyB0cmlwbGUgYXN0ZXJpeCBsaW5lIHNob3VsZCBiZSBhIGJsYW5rIGxpbmUuKi8KCi8qKiBBIHNlY29uZCB0ZXN0IHdpdGhvdXQgdGhlIGxpbmUgYnJlYWsgKi8KCkRvTm90aGluZ0Z1bmN0aW9uKCkKCi8qKiAKICogQSB0aGlyZCBUaGluZwogKi8KCiAvLyBTaW5nbGUgbGluZSBjb21tZW50LCB3aWxsIG5vdCBvdXRwdXQK'
 	},
-	{
-		ACTUAL_U8ARRAY: U8ARRAYS_OBJECT.tc3,
-		ACTUAL_BUFFER: Buffer.from( U8ARRAYS_OBJECT.tc3 ),
-		ACTUAL_BASE64: 'CmZ1bmN0aW9uIERvTm90aGluZ0Z1bmN0aW9uKCkgewogIC8vZGF0YSBiZWZvcmUKfQoKLyoqIAogIEEgdGVzdCBvdXRwdXQgc3RyaW5nIGZvciBwdWxsaW5nLyBTaW5nbGUgbGluZSBjb21tZW50LCB3aWxsIG5vdCBvdXRwdXQKDU1lc3NpbmcgYXJvdW5kIHdpdGggYWRkaXRpb25hbCBgMGRgcy4NCg=='
+	tc3: {
+		u8array: new Uint8Array( [ 10,102,117,110,99,116,105,111,110,32,68,111,78,111,116,104,105,110,103,70,117,110,99,116,105,111,110,40,41,32,123,10,32,32,47,47,100,97,116,97,32,98,101,102,111,114,101,10,125,10,10,47,42,42,32,10,32,32,65,32,116,101,115,116,32,111,117,116,112,117,116,32,115,116,114,105,110,103,32,102,111,114,32,112,117,108,108,105,110,103,47,32,83,105,110,103,108,101,32,108,105,110,101,32,99,111,109,109,101,110,116,44,32,119,105,108,108,32,110,111,116,32,111,117,116,112,117,116,10,13,77,101,115,115,105,110,103,32,97,114,111,117,110,100,32,119,105,116,104,32,97,100,100,105,116,105,111,110,97,108,32,96,48,100,96,115,46,13,10 ] ),
+		base64: 'CmZ1bmN0aW9uIERvTm90aGluZ0Z1bmN0aW9uKCkgewogIC8vZGF0YSBiZWZvcmUKfQoKLyoqIAogIEEgdGVzdCBvdXRwdXQgc3RyaW5nIGZvciBwdWxsaW5nLyBTaW5nbGUgbGluZSBjb21tZW50LCB3aWxsIG5vdCBvdXRwdXQKDU1lc3NpbmcgYXJvdW5kIHdpdGggYWRkaXRpb25hbCBgMGRgcy4NCg=='
 	}
-];
+};*/
+
 //##Errors
 
 //#Global Variables
@@ -135,6 +127,95 @@ function setLogger( logger ){
 	//Return
 }
 /**
+### DoTestCase_Async
+> Performs the test case assertions.
+
+Parametres:
+| name | type | description |
+| --- | --- | --- |
+| test_case_file_path | {string} | The filepath for the test case.  |
+
+Returns:
+| type | description |
+| --- | --- |
+| {Promise} | A promise that resolves to `0` if all good. |
+
+Throws:
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if a given argument isn't of the correct type. |
+
+History:
+| version | change |
+| --- | --- |
+| 0.0.1 | WIP |
+*/
+async function DoTestCase_Async( test_case_file_path ){
+	var arguments_array = Array.from(arguments);
+	var _return;
+	var return_error;
+	const FUNCTION_NAME = 'DoTestCase_Async';
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+	//Variables
+	var path_object = Path.parse( test_case_file_path );
+	var name_string = path_object.name;
+	//Parametre checks
+	if( typeof(test_case_file_path) !== 'string' ){
+		return_error = new TypeError('Param "test_case_file_path" is not string.');
+		return_error.code = 'ERR_INVALID_ARG_TYPE';
+		throw return_error;
+	}
+
+	//Function
+	try{
+		//Load Test Data
+		var actual_base64 = FileSystem.readFileSync( Path.join( 'test', 'data', name_string+'.b64' ), 'utf8' );
+		var actual_buffer = Buffer.from( actual_base64, 'base64' );
+		var actual_u8array = new Uint8Array( actual_buffer );
+		var actual_string = actual_buffer.toString( 'utf8' );
+		//Load test input
+		var file_buffer = FileSystem.readFileSync( Path.join( 'test', 'input', name_string ) );
+		var file_string = FileSystem.readFileSync( Path.join( 'test', 'input', name_string ), 'utf8' );
+		var file_u8array = new Uint8Array( file_buffer );
+		var file_base64 = file_buffer.toString( 'base64' );
+		//Assertions
+		console.log('For %s: testing buffer.', name_string);
+		Assert.deepStrictEqual( file_buffer, actual_buffer );
+		console.log('For %s: testing string.', name_string);
+		Assert.deepStrictEqual( file_string, actual_string );
+		console.log('For %s: testing u8array.', name_string);
+		Assert.deepStrictEqual( file_u8array, actual_u8array );
+		console.log('For %s: testing base64.', name_string);
+		Assert.deepStrictEqual( file_base64, actual_base64 );
+		/*console.log( file_buffer );
+		console.log('Testing read file buffer against ACTUAL_BUFFER');
+		Assert.deepStrictEqual( file_buffer, TEST_DATA_ARRAY[i].ACTUAL_BUFFER );
+		var file_string = FileSystem.readFileSync( test_cases[i], 'utf8' );
+		console.log( file_string );
+		console.log('Testing file_string against file_buffer.toString');
+		Assert.deepStrictEqual( file_string, file_buffer.toString( 'utf8' ) );
+		console.log('Testing file_string against TEST_DATA_ARRAY.ACTUAL_BUFFER.toString');
+		Assert.deepStrictEqual( file_string, TEST_DATA_ARRAY[i].ACTUAL_BUFFER.toString( 'utf8' ) );
+		//FileSystem.writeFileSync( 'Output/example-source-file.utf8', source_string, 'utf8' );
+		var file_u8array = new Uint8Array( file_buffer );
+		console.log( file_u8array );
+		console.log('Testing file_u8array against TEST_DATA_ARRAY.ACTUAL_U8ARRAY');
+		Assert.deepStrictEqual( file_u8array, TEST_DATA_ARRAY[i].ACTUAL_U8ARRAY );
+		//FileSystem.writeFileSync( 'Output/example-source-file.u8array', source_u8array.toString(), 'utf8' );
+		var file_base64 = file_buffer.toString( 'base64' );
+		console.log( file_base64 );
+		console.log('Testing file_base64 against TEST_DATA_ARRAY.ACTUAL_BASE64');
+		Assert.deepStrictEqual( file_base64, TEST_DATA_ARRAY[i].ACTUAL_BASE64 );*/
+	} catch(error){
+		console.error('Caught: ', error);
+		process.exitCode = 1;
+	}
+
+	//Return
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
+	return _return;
+}
+/**
 ### main_Async
 > The main execution block. This function is private and should never be called directly.
 
@@ -153,7 +234,7 @@ History:
 | --- | --- |
 | 0.0.1 | WIP |
 */
-function main_Async( options = {} ){
+async function main_Async( options = {} ){
 	var arguments_array = Array.from(arguments);
 	var return_error;
 	const FUNCTION_NAME = 'main_Async';
@@ -219,31 +300,6 @@ function main_Async( options = {} ){
 	}*/
 	for( var i = 0; i < test_cases.length; i++ ){
 		console.log( 'Test case %d: %s', i, test_cases[i] );
-		try{
-			var file_buffer = FileSystem.readFileSync( test_cases[i] );
-			console.log( file_buffer );
-			console.log('Testing read file buffer against ACTUAL_BUFFER');
-			Assert.deepStrictEqual( file_buffer, TEST_DATA_ARRAY[i].ACTUAL_BUFFER );
-			var file_string = FileSystem.readFileSync( test_cases[i], 'utf8' );
-			console.log( file_string );
-			console.log('Testing file_string against file_buffer.toString');
-			Assert.deepStrictEqual( file_string, file_buffer.toString( 'utf8' ) );
-			console.log('Testing file_string against TEST_DATA_ARRAY.ACTUAL_BUFFER.toString');
-			Assert.deepStrictEqual( file_string, TEST_DATA_ARRAY[i].ACTUAL_BUFFER.toString( 'utf8' ) );
-			//FileSystem.writeFileSync( 'Output/example-source-file.utf8', source_string, 'utf8' );
-			var file_u8array = new Uint8Array( file_buffer );
-			console.log( file_u8array );
-			console.log('Testing file_u8array against TEST_DATA_ARRAY.ACTUAL_U8ARRAY');
-			Assert.deepStrictEqual( file_u8array, TEST_DATA_ARRAY[i].ACTUAL_U8ARRAY );
-			//FileSystem.writeFileSync( 'Output/example-source-file.u8array', source_u8array.toString(), 'utf8' );
-			var file_base64 = file_buffer.toString( 'base64' );
-			console.log( file_base64 );
-			console.log('Testing file_base64 against TEST_DATA_ARRAY.ACTUAL_BASE64');
-			Assert.deepStrictEqual( file_base64, TEST_DATA_ARRAY[i].ACTUAL_BASE64 );
-		} catch(error){
-			console.error('Caught: ', error);
-			process.exitCode = 1;
-		}
 	}
 }
 //#Exports and Execution
