@@ -153,7 +153,7 @@ History:
 | --- | --- |
 | 0.0.1 | WIP |
 */
-async function main_Async( options = {} ){
+function main_Async( options = {} ){
 	var arguments_array = Array.from(arguments);
 	var return_error;
 	const FUNCTION_NAME = 'main_Async';
