@@ -1,0 +1,8 @@
+
+function DoNothingFunction() {
+  //data before
+}
+
+/** 
+  A test output string for pulling/ Single line comment, will not output
+Messing around with additional `0d`s.
