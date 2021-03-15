@@ -40,6 +40,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	const FileSystem = require('fs');
 	const Assert = require('assert').strict;
 	const OperatingSystem = require('os');
+	const Path = require('path');
 	//##External
 	const MakeDir = require('make-dir');
 //#Constants
@@ -217,28 +218,28 @@ async function main_Async( options = {} ){
 		process.exitCode = 1;
 	}*/
 	for( var i = 0; i < test_cases.length; i++ ){
-		console.log( `Test case ${i]: ${test_cases[i]}` );
+		console.log( `Test case ${i}: ${test_cases[i]}` );
 		try{
 			var file_buffer = FileSystem.readFileSync( test_cases[i] );
 			console.log( file_buffer );
 			console.log('Testing read file buffer against ACTUAL_BUFFER');
-			Assert.deepStrictEqual( file_buffer, TEST_DATA_ARRAY.ACTUAL_BUFFER );
+			Assert.deepStrictEqual( file_buffer, TEST_DATA_ARRAY[i].ACTUAL_BUFFER );
 			var file_string = FileSystem.readFileSync( test_cases[i], 'utf8' );
 			console.log( file_string );
 			console.log('Testing file_string against file_buffer.toString');
 			Assert.deepStrictEqual( file_string, file_buffer.toString( 'utf8' ) );
 			console.log('Testing file_string against TEST_DATA_ARRAY.ACTUAL_BUFFER.toString');
-			Assert.deepStrictEqual( file_string, TEST_DATA_ARRAY.ACTUAL_BUFFER.toString( 'utf8' ) );
+			Assert.deepStrictEqual( file_string, TEST_DATA_ARRAY[i].ACTUAL_BUFFER.toString( 'utf8' ) );
 			//FileSystem.writeFileSync( 'Output/example-source-file.utf8', source_string, 'utf8' );
 			var file_u8array = new Uint8Array( file_buffer );
 			console.log( file_u8array );
 			console.log('Testing file_u8array against TEST_DATA_ARRAY.ACTUAL_U8ARRAY');
-			Assert.deepStrictEqual( file_u8array, TEST_DATA_ARRAY.ACTUAL_U8ARRAY );
+			Assert.deepStrictEqual( file_u8array, TEST_DATA_ARRAY[i].ACTUAL_U8ARRAY );
 			//FileSystem.writeFileSync( 'Output/example-source-file.u8array', source_u8array.toString(), 'utf8' );
 			var file_base64 = file_buffer.toString( 'base64' );
 			console.log( file_base64 );
 			console.log('Testing file_base64 against TEST_DATA_ARRAY.ACTUAL_BASE64');
-			Assert.deepStrictEqual( file_base64, TEST_DATA_ARRAY.ACTUAL_BASE64 );
+			Assert.deepStrictEqual( file_base64, TEST_DATA_ARRAY[i].ACTUAL_BASE64 );
 		} catch(error){
 			console.error(`Caught: ${error}`);
 			process.exitCode = 1;
