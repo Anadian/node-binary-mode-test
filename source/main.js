@@ -223,7 +223,7 @@ async function main_Async( options = {} ){
 	}
 
 	//Function
-	for( var i = 0; i < test_cases.length; i++ ){
+	/*for( var i = 0; i < test_cases.length; i++ ){
 		console.log( 'Test case %d: %s', i, test_cases[i] );
 		try{
 			await DoTestCase_Async( test_cases[i] );
@@ -232,7 +232,10 @@ async function main_Async( options = {} ){
 			console.error( return_error );
 			process.exitCode = 1;
 		}
-	}
+	}*/
+	setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
+	setTimeout( DoTestCase_Async, 60000, test_cases[1] ); 
+	setTimeout( DoTestCase_Async, 120000, test_cases[2] ); 
 }
 //#Exports and Execution
 if(require.main === module){
