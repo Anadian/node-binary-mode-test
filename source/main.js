@@ -218,7 +218,7 @@ function main_Async( options = {} ){
 		process.exitCode = 1;
 	}*/
 	for( var i = 0; i < test_cases.length; i++ ){
-		console.log( `Test case ${i}: ${test_cases[i]}` );
+		console.log( 'Test case %d: %s', i, test_cases[i] );
 		try{
 			var file_buffer = FileSystem.readFileSync( test_cases[i] );
 			console.log( file_buffer );
@@ -241,7 +241,7 @@ function main_Async( options = {} ){
 			console.log('Testing file_base64 against TEST_DATA_ARRAY.ACTUAL_BASE64');
 			Assert.deepStrictEqual( file_base64, TEST_DATA_ARRAY[i].ACTUAL_BASE64 );
 		} catch(error){
-			console.error(`Caught: ${error}`);
+			console.error('Caught: ', error);
 			process.exitCode = 1;
 		}
 	}
