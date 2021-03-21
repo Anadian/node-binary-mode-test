@@ -38,7 +38,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//##Internal
 	//##Standard
 	const FileSystem = require('fs');
-	const FS_Promise = require('fs/promises');
+	const FS_Promise = require('fs').promises;
 	const Assert = require('assert').strict;
 	const OperatingSystem = require('os');
 	const Path = require('path');
