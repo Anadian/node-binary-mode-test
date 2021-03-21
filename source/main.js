@@ -38,6 +38,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//##Internal
 	//##Standard
 	const FileSystem = require('fs');
+	const FS_Promise = require('fs/promises');
 	const Assert = require('assert').strict;
 	const OperatingSystem = require('os');
 	const Path = require('path');
@@ -144,6 +145,14 @@ async function DoTestCase_Async( test_case_file_path ){
 	//Variables
 	var path_object = Path.parse( test_case_file_path );
 	var name_string = path_object.name;
+	var input_path_string = '';
+	var file_handle = null;
+	var read_buffer = null;
+	var stats_object = {};
+	/*var actual_base64 = '';
+	var actual_buffer = null;
+	var actual_u8array = null;
+	var actual_string = '';*/
 	//Parametre checks
 	if( typeof(test_case_file_path) !== 'string' ){
 		return_error = new TypeError('Param "test_case_file_path" is not string.');
@@ -159,11 +168,45 @@ async function DoTestCase_Async( test_case_file_path ){
 		var actual_u8array = new Uint8Array( actual_buffer );
 		var actual_string = actual_buffer.toString( 'utf8' );
 		//Load test input
+		try{
+			input_path_string = Path.join( 'test', 'input', name_string );
+		} catch(error){
+			return_error = new Error(`Path.join threw an error: ${error}`);
+			throw return_error;
+		}
+		try{
+			file_handle = await FS_Promise.open( Path.join( 'test', 'input', name_string ), 'r' );
+			//console.log( file_handle );
+		} catch(error){
+			return_error = new Error(`await FS_Promise.open threw an error: ${error}`);
+			throw return_error;
+		}
+		try{
+			stats_object = await file_handle.stat();
+		} catch(error){
+			return_error = new Error(`await file_handle.stat threw an error: ${error}`);
+			throw return_error;
+		}
+		try{
+			read_buffer = Buffer.alloc( Math.min( stats_object.size, 4096 ) );
+		} catch(error){
+			return_error = new Error(`Buffer.alloc threw an error: ${error}`);
+			throw return_error;
+		}
+		try{
+			var read_object = await file_handle.read( read_buffer, 0, read_buffer.length, 0 );
+			console.log( read_object, read_buffer );
+		} catch(error){
+			return_error = new Error(`await file_handle.read threw an error: ${error}`);
+			throw return_error;
+		}
 		var file_buffer = FileSystem.readFileSync( Path.join( 'test', 'input', name_string ) );
 		var file_string = FileSystem.readFileSync( Path.join( 'test', 'input', name_string ), 'utf8' );
 		var file_u8array = new Uint8Array( file_buffer );
 		var file_base64 = file_buffer.toString( 'base64' );
 		//Assertions
+		console.log('For %s: testing async_buffer', name_string);
+		Assert.deepStrictEqual( read_buffer, actual_buffer );
 		console.log('For %s: testing buffer.', name_string);
 		Assert.deepStrictEqual( file_buffer, actual_buffer );
 		console.log('For %s: testing string.', name_string);
@@ -223,7 +266,7 @@ async function main_Async( options = {} ){
 	}
 
 	//Function
-	/*for( var i = 0; i < test_cases.length; i++ ){
+	for( var i = 0; i < test_cases.length; i++ ){
 		console.log( 'Test case %d: %s', i, test_cases[i] );
 		try{
 			await DoTestCase_Async( test_cases[i] );
@@ -232,10 +275,10 @@ async function main_Async( options = {} ){
 			console.error( return_error );
 			process.exitCode = 1;
 		}
-	}*/
-	setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
+	}
+	/*setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
 	setTimeout( DoTestCase_Async, 10000, test_cases[1] ); 
-	setTimeout( DoTestCase_Async, 40000, test_cases[2] ); 
+	setTimeout( DoTestCase_Async, 40000, test_cases[2] );*/
 }
 //#Exports and Execution
 if(require.main === module){
