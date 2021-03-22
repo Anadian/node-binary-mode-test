@@ -195,7 +195,7 @@ async function DoTestCase_Async( test_case_file_path ){
 		}
 		try{
 			var read_object = await file_handle.read( read_buffer, 0, read_buffer.length, 0 );
-			console.log( read_object, read_buffer );
+			//console.log( read_object, read_buffer );
 		} catch(error){
 			return_error = new Error(`await file_handle.read threw an error: ${error}`);
 			throw return_error;
@@ -215,6 +215,7 @@ async function DoTestCase_Async( test_case_file_path ){
 		Assert.deepStrictEqual( file_u8array, actual_u8array );
 		console.log('For %s: testing base64.', name_string);
 		Assert.deepStrictEqual( file_base64, actual_base64 );
+		file_handle.close();
 		_return = 0;
 	} catch(error){
 		console.error('Caught: ', error);
@@ -256,7 +257,9 @@ async function main_Async( options = {} ){
 	var test_cases = [
 		Path.join( 'test', 'input', 'tc1' ),
 		Path.join( 'test', 'input', 'tc2' ),
-		Path.join( 'test', 'input', 'tc3' )
+		Path.join( 'test', 'input', 'tc3' ),
+		Path.join( 'test', 'input', 'tc4' ),
+		Path.join( 'test', 'input', 'tc5' )
 	];
 	//Parametre checks
 	if( typeof(options) !== 'object' ){
@@ -266,19 +269,20 @@ async function main_Async( options = {} ){
 	}
 
 	//Function
-	/*for( var i = 0; i < test_cases.length; i++ ){
+	for( var i = 0; i < test_cases.length; i++ ){
 		console.log( 'Test case %d: %s', i, test_cases[i] );
 		try{
-			await DoTestCase_Async( test_cases[i] );
+			//await DoTestCase_Async( test_cases[i] );
+			setTimeout( DoTestCase_Async, 20000*i, test_cases[i] );
 		} catch(error){
 			return_error = new Error(`await DoTestCase_Async threw an error: ${error}`);
 			console.error( return_error );
 			process.exitCode = 1;
 		}
-	}*/
-	setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
+	}
+	/*setTimeout( DoTestCase_Async, 1, test_cases[0] ); 
 	setTimeout( DoTestCase_Async, 10000, test_cases[1] ); 
-	setTimeout( DoTestCase_Async, 40000, test_cases[2] );
+	setTimeout( DoTestCase_Async, 40000, test_cases[2] );*/
 }
 //#Exports and Execution
 if(require.main === module){
