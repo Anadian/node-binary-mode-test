@@ -103,8 +103,15 @@ if(require.main === module){
 	var new_string = '';
 	var new_buffer = null;
 	var base64_string = '';
-	for( var i = 0; i < test_chars.length; i++ ){
+	/*for( var i = 0; i < test_chars.length; i++ ){
 		new_string = base_string + test_chars[i];
+		FileSystem.writeFileSync( `test/input/${i}.utf8`, new_string, 'utf8');
+		new_buffer = Buffer.from(new_string);
+		base64_string = new_buffer.toString('base64');
+		FileSystem.writeFileSync( `test/DATA/${i}.b64`, base64_string );
+	}*/
+	for( var i = 0; i < 256; i++ ){
+		new_string = base_string + String.fromCharCode( i );
 		FileSystem.writeFileSync( `test/input/${i}.utf8`, new_string, 'utf8');
 		new_buffer = Buffer.from(new_string);
 		base64_string = new_buffer.toString('base64');

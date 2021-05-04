@@ -68,18 +68,31 @@ if(require.main === module){
 		//### Internal
 		//### Standard
 		//### External
-	for( var i = 0; i < 30; i++ ){
+	var test_array = [];
+	var binary_array = [];
+	var text_array = [];
+	for( var i = 0; i < 256; i++ ){
 		var data_path = Path.join( 'test', 'DATA', `${i}.b64` );
 		var input_path = Path.join( 'test', 'input', `${i}.utf8` );
 		var data_string = FileSystem.readFileSync( data_path, 'utf8' );
-		console.log( i, data_string );
+		//console.log( i, data_string );
 		var data_buffer = Buffer.from( data_string, 'base64' );
 		var input_buffer = FileSystem.readFileSync( input_path );
 		try{
 			Assert.deepStrictEqual( input_buffer, data_buffer );
+			test_array.push( 'binary' );
+			binary_array.push( i );
 		} catch(error){
 			console.error(`Assert.deepStrictEqual threw an error for ${i}: ${error}`);
+			test_array.push( 'text' );
+			text_array.push( i );
 		}
 	}
+	console.log( 'test_array' );
+	for( var i = 0; i < test_array.length; i++ ){
+		console.log( `${i.toString(16)}: ${test_array[i]}` );
+	}
+	console.log( 'binary_array: ', binary_array );
+	console.log( 'text_array: ', text_array );
 } else{
 }
